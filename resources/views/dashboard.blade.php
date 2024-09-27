@@ -17,6 +17,10 @@
             <p>Your Name: {{ $user->name }}</p>
             <p>Your Email: {{ $user->email }}</p>
 
+            <div class="mt-4">
+            <a href="{{ route('fileUpload') }}" class="btn btn-primary">Upload a File</a>
+        </div>
+
            
         </div>
     </div>
