@@ -24,7 +24,6 @@ class FileController extends Controller
             ]);
             
             if ($request->file('file')->isValid()) {
-    
                 $filePath = $request->file('file')->store('uploads', 'public');
                 File::create([
                     'user_id' => $userId,
