@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use App\Models\File;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 
@@ -12,7 +13,7 @@ class AuthController extends Controller
         return view ('auth.register');
     }
 
-    
+
     public function Register(Request $request){
         $request->validate([
 
@@ -37,11 +38,15 @@ class AuthController extends Controller
         $userId = session('user_id');
         if ($userId) {
             $user = User::find($userId); 
+            $file_data = File::where('user_id', $userId)->get();
+            if ($file_data->isEmpty()) {
+                $file_data = null; 
+            }
         } else {
             return redirect()->route('login')->with('error', 'User not logged in.');
         }
 
-        return view('dashboard', compact('user'));
+        return view('dashboard', compact('user','file_data'));
     }
 
 

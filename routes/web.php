@@ -17,6 +17,7 @@ Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 Route::get('/fileUpload',[FileController::class, 'FileUploadForm'])->name('fileUpload');
 Route::post('/upload',[FileController::class, 'upload']);
 Route::get('/upload',[FileController::class, 'upload']);
+Route::delete('/files/delete/{id}', [FileController::class, 'delete'])->name('files.delete');
 
 
 

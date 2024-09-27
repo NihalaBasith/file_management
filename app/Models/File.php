@@ -8,10 +8,13 @@ use Illuminate\Database\Eloquent\Model;
 class File extends Model
 {
     use HasFactory;
-    
+
     protected $fillable = [
         'user_id',
         'file_name',
         'upload_time',
+    ];
+    protected $casts = [
+        'upload_time' => 'datetime', 
     ];
 }

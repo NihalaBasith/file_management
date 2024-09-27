@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 use Illuminate\Support\Facades\Auth;
 use App\Models\File;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
+
 
 class FileController extends Controller
 {
@@ -40,4 +42,15 @@ class FileController extends Controller
         return redirect()->route('login')->with('error', 'User not logged in.');
 
     }
+
+
+    public function delete($id)
+{
+    $file = File::findOrFail($id);
+    Storage::disk('public')->delete('uploads/' . $file->file_name); // Delete the file from storage
+    $file->delete();
+
+    return redirect()->back()->with('success', 'File deleted successfully.');
+}
+
 }
