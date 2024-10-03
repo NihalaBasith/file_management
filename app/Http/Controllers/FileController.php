@@ -47,7 +47,7 @@ class FileController extends Controller
     public function delete($id)
 {
     $file = File::findOrFail($id);
-    Storage::disk('public')->delete('uploads/' . $file->file_name); // Delete the file from storage
+    Storage::disk('public')->delete('uploads/' . $file->file_name); 
     $file->delete();
 
     return redirect()->back()->with('success', 'File deleted successfully.');
