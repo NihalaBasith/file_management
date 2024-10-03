@@ -39,7 +39,8 @@
                         <td>{{ $file->file_name }}</td>
                         <td>{{ $file->upload_time->format('d-m-Y') }}</td>
                         <td>
-                            <a href="{{ asset('storage/uploads/' . $file->file_name) }}" class="btn btn-info" target="_blank">Download</a>
+                           <a href="{{ route('fileRename', $file->id) }}" class="btn btn-info">Rename</a>
+
                             <a href="{{ asset('storage/uploads/' . $file->file_name) }}" class="btn btn-secondary" target="_blank">View</a>
                             <form action="{{ route('files.delete', $file->id) }}" method="POST" style="display:inline;">
                                 @csrf

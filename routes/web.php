@@ -18,6 +18,11 @@ Route::get('/fileUpload',[FileController::class, 'FileUploadForm'])->name('fileU
 Route::post('/upload',[FileController::class, 'upload']);
 Route::get('/upload',[FileController::class, 'upload']);
 Route::delete('/files/delete/{id}', [FileController::class, 'delete'])->name('files.delete');
+Route::get('/fileRename/{id}',[FileController::class, 'fileRenameForm'])->name('fileRename');
+Route::post('file/rename/{id}',[FileController::class, 'rename'])->name('file.rename');
+// Route::get('file/rename/{id}',[FileController::class, 'rename']);
+
+
 
 
 
